@@ -8,7 +8,7 @@ export default function TaskList({ tasks, updateTasks }) {
         <>
             <ul>
                 {pinnedTasks.map(task => 
-                    <div key={task.id} style={{display: "flex", alignItems: "center"}}>
+                    <div key={task.id} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <Task updateTasks={updateTasks} task={task} />
                     </div>
                 )}
@@ -16,7 +16,7 @@ export default function TaskList({ tasks, updateTasks }) {
             {pinnedTasks.length > 0 && <hr />}
             <ul>
                 {unpinnedTasks.map(task => 
-                    <div key={task.id} style={{display: "flex", alignItems: "center"}}>
+                    <div key={task.id} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <Task updateTasks={updateTasks} task={task} />
                     </div>
                 )}

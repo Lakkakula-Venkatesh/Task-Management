@@ -47,14 +47,17 @@ export default function Task({ task, updateTasks }) {
     return (
         <>
             <input type="checkbox" name="complete" id="complete-radio" onClick={updateTaskStatus} defaultChecked={currentTask.status === "completed"} />
-            <h3>{currentTask.title}</h3>
-            <span>{currentTask.description}</span>
-            <button onClick={() => setDropdown((prevState) => !prevState)}>...</button>
-            {dropdown && (
-                <div className="action-dropdown">
+            <div style={{padding: "0px 10px", margin: "0px 25px"}}>
+                <h3>{currentTask.title}</h3>
+                <span>{currentTask.description}</span>
+            </div>
+            {dropdown ? (
+                <div className="action-dropdown" style={{flexDirection: "column"}}>
                     <button onClick={updateTaskPin}>{currentTask.pinned ? "Unpin" : "Pin to the top"}</button>
                     <button onClick={deleteTask}>Delete</button>
                 </div>
+            ) : (
+                <button onClick={() => setDropdown((prevState) => !prevState)}>...</button>
             )}
         </>
     );

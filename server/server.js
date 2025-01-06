@@ -23,6 +23,10 @@ app.use(express.json()); // Parse incoming JSON requests
 app.post('/api/task', async (req, res) => {
     const { title, description, scheduledDate, status, pinned } = req.body;
 
+    if (scheduledDate < new Date().toISOString().split('T')[0]) {
+        return res.status(400).json({ error: 'Scheduled date must be in the future' });
+    }
+    
     try {
         const result = await pool.query(
             'INSERT INTO tasks (title, description, scheduled_date, status, pinned) VALUES ($1, $2, $3, $4, $5) RETURNING *',

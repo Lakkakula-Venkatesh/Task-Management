@@ -45,8 +45,10 @@ function Home() {
                 handleNextDay={handleNextDay}
             />
             {taskForm ? 
-                <NewTask updateTasks={() => setTaskUpdate(prevState => prevState + 1)} /> :
-                <div onClick={() => setTaskForm(true)}>Add a task..</div>
+                <NewTask updateTasks={() => setTaskUpdate(prevState => prevState + 1)} toggleTaskForm={() => setTaskForm(false)} /> :
+                <div onClick={() => setTaskForm(true)} style={{cursor: "pointer", width: "100px", height: "20px", border: "1px solid black", borderRadius: "5px", textAlign: "center", margin: "10px auto"}}>
+                    Add a task..
+                </div>
             }
             <TaskList tasks={tasks} updateTasks={() => setTaskUpdate(prevState => prevState + 1)} />
         </>
